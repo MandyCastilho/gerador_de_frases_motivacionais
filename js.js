@@ -50,9 +50,5 @@ const frases = [
       window.open(url, "_blank");
     }
 
-    function alternarTema() {
-      document.body.classList.toggle("light");
-    }
-
     // Carrega frases favoritas ao abrir a página
     atualizarFavoritas();
