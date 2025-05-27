@@ -14,14 +14,24 @@
 </head>
 
 <body>
-
+  
   <h1>Gerador de Frases Motivacionais</h1>
 
   <div class="frase-container" id="frase">
-    Clique no botão para receber uma frase motivacional!
+    Clique no botão para uma dose de motivação!
   </div>
 
-  <button id="gerarBtn">Gerar Frase</button>
+  <div class="botoes">
+    <button onclick="gerarFrase()">Nova Frase</button>
+    <button onclick="salvarFrase()">Salvar Favorita</button>
+    <button onclick="compartilharFrase()">Compartilhar no WhatsApp</button>
+    <button onclick="alternarTema()">Alternar Tema</button>
+  </div>
+
+  <div class="favoritas" id="favoritas">
+    <h2>Frases Favoritas 💖</h2>
+    <ul id="listaFavoritas"></ul>
+  </div>
 
   <script src="js.js"></script>
 
