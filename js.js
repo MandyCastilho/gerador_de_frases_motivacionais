@@ -52,3 +52,52 @@ const frases = [
 
     // Carrega frases favoritas ao abrir a página
     atualizarFavoritas();
+
+    // 🌟 Fundo encantado com partículas brilhantes estilo princesa
+
+const canvas = document.createElement("canvas");
+canvas.id = "particles-bg";
+document.body.appendChild(canvas);
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function createParticle() {
+  const size = Math.random() * 2 + 1;
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: size,
+    alpha: Math.random() * 0.8 + 0.2,
+    speed: Math.random() * 0.5 + 0.2,
+  };
+}
+
+for (let i = 0; i < 100; i++) {
+  particles.push(createParticle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach((p) => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = "#fff";
+    ctx.fill();
+    p.y -= p.speed;
+    if (p.y < 0) {
+      p.y = canvas.height;
+      p.x = Math.random() * canvas.width;
+    }
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
