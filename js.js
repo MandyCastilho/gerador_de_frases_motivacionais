@@ -1,27 +1,58 @@
 const frases = [
-      "O sucesso é a soma de pequenos esforços repetidos dia após dia.",
-      "Acredite em você e todo o resto virá naturalmente.",
-      "Não pare até se orgulhar.",
-      "A única maneira de fazer um excelente trabalho é amar o que você faz.",
-      "O segredo do sucesso é começar antes de estar pronto.",
-      "Não espere por oportunidades, crie-as.",
-      "Grandes conquistas começam com pequenos passos.",
-      "Seja a mudança que você quer ver no mundo.",
-      "A persistência é o caminho do êxito.",
-      "Seu futuro depende do que você faz hoje."
+      "O sucesso é a soma de pequenos esforços repetidos diariamente.",
+      "Você é mais forte do que pensa. Continue!",
+      "Acredite nos seus sonhos e vá atrás deles.",
+      "Não pare até se orgulhar de quem você se tornou.",
+      "Sua única limitação é aquela que você aceita.",
+      "Toda jornada começa com um primeiro passo.",
+      "Desafios são oportunidades disfarçadas.",
+      "Você nasceu para brilhar. Não se esconda.",
+      "Nunca subestime o poder da persistência.",
+      "Hoje é um bom dia para vencer!"
     ];
 
-    const fraseContainer = document.getElementById('frase');
-    const btn = document.getElementById('gerarBtn');
+    const fraseContainer = document.getElementById("frase");
+    const listaFavoritas = document.getElementById("listaFavoritas");
 
-    btn.addEventListener('click', () => {
-      // Gera um índice aleatório
-      const indice = Math.floor(Math.random() * frases.length);
-      // Atualiza a frase no container
-      fraseContainer.textContent = frases[indice];
-      // Animação simples: fade-in
+    function gerarFrase() {
+      const index = Math.floor(Math.random() * frases.length);
+      fraseContainer.textContent = frases[index];
       fraseContainer.style.opacity = 0;
       setTimeout(() => {
         fraseContainer.style.opacity = 1;
       }, 100);
-    });
+    }
+
+    function salvarFrase() {
+      const frase = fraseContainer.textContent;
+      let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+
+      if (!favoritas.includes(frase)) {
+        favoritas.push(frase);
+        localStorage.setItem("favoritas", JSON.stringify(favoritas));
+        atualizarFavoritas();
+      }
+    }
+
+    function atualizarFavoritas() {
+      let favoritas = JSON.parse(localStorage.getItem("favoritas")) || [];
+      listaFavoritas.innerHTML = "";
+      favoritas.forEach((f) => {
+        const li = document.createElement("li");
+        li.textContent = f;
+        listaFavoritas.appendChild(li);
+      });
+    }
+
+    function compartilharFrase() {
+      const frase = encodeURIComponent(fraseContainer.textContent);
+      const url = `https://wa.me/?text=${frase}`;
+      window.open(url, "_blank");
+    }
+
+    function alternarTema() {
+      document.body.classList.toggle("light");
+    }
+
+    // Carrega frases favoritas ao abrir a página
+    atualizarFavoritas();
