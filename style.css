@@ -12,7 +12,7 @@
   --bg: linear-gradient(135deg, var(--cor1), var(--cor2));
   --text: var(--cor5);
   --accent: var(--cor4);
-  --card: rgba(255, 255, 255, 0.55);
+  --card: rgba(255, 255, 255, 0.6);
   --glow: 0 0 12px var(--accent);
 }
 
@@ -21,8 +21,33 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', 'Segoe UI', sans-serif;
-  transition: background 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+  transition: all 0.3s ease-in-out;
 }
+
+/* Barra de rolagem estilizada */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--cor6), var(--accent));
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--accent);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--accent), var(--cor6));
+  box-shadow: 0 0 15px var(--cor4);
+}
+
 
 body {
   background: var(--bg);
@@ -34,18 +59,23 @@ body {
   min-height: 100vh;
   padding: 20px;
   text-align: center;
-  font-family: 'Poppins', 'Segoe UI', sans-serif;
-  line-height: 1.6;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 h1 {
   font-size: 3rem;
   margin-bottom: 25px;
   color: var(--accent);
-  text-shadow: 0 0 10px var(--cor6), 0 0 20px var(--cor2);
-  font-weight: 700;
-  letter-spacing: 1px;
+  text-shadow: 0 0 15px var(--cor6), 0 0 30px var(--cor2);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
 .frase-container {
@@ -56,16 +86,16 @@ h1 {
   min-height: 130px;
   font-size: 1.6rem;
   font-weight: 600;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12px);
   border: 2px dashed var(--cor6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 15px var(--cor3);
   position: relative;
-  transition: background 0.3s ease, transform 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s;
 }
 
 .frase-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px var(--cor6);
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px var(--cor6), 0 0 30px var(--cor3);
 }
 
 .botoes {
@@ -82,7 +112,7 @@ button {
   color: #fff;
   border: none;
   padding: 14px 32px;
-  border-radius: 30px;
+  border-radius: 40px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
@@ -93,26 +123,27 @@ button {
 button:hover {
   transform: scale(1.1);
   background: linear-gradient(135deg, var(--cor6), var(--accent));
-  box-shadow: 0 8px 25px var(--cor6), 0 0 15px var(--accent);
+  box-shadow: 0 8px 25px var(--cor6), 0 0 20px var(--accent);
 }
 
 .favoritas {
   max-width: 700px;
   background: var(--card);
-  padding: 28px;
-  border-radius: 20px;
+  padding: 30px;
+  border-radius: 22px;
   font-size: 1rem;
   text-align: left;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--cor2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--cor2);
+  margin-top: 20px;
 }
 
 .favoritas h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 15px;
   color: var(--accent);
-  text-shadow: 0 0 8px var(--cor6);
+  text-shadow: 0 0 8px var(--cor6), 0 0 15px var(--cor7);
 }
 
 .favoritas ul {
@@ -120,12 +151,40 @@ button:hover {
   padding-left: 0;
 }
 
+.favoritas ul li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 10px 15px;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
 .favoritas ul li::before {
   content: "💖";
   margin-right: 10px;
   color: var(--cor4);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   vertical-align: middle;
+}
+
+.favoritas ul li button {
+  background-color: var(--cor4);
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.favoritas ul li button:hover {
+  background-color: #c41ec6;
 }
 
 #particles-bg {
@@ -137,6 +196,28 @@ button:hover {
   z-index: -1;
   pointer-events: none;
 }
+
+.btn-apagar-tudo {
+  margin-top: 15px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #ff8fa3, #ffc5dc);
+  color: #4e0009;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-apagar-tudo:hover {
+  background: linear-gradient(135deg, #ff6f91, #ffb7c5);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #ffb6c1;
+}
+
+
 
 
 
