@@ -217,6 +217,107 @@ button:hover {
   box-shadow: 0 0 20px #ffb6c1;
 }
 
+/* Responsividade para tablets e celulares */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  .frase-container {
+    padding: 25px 30px;
+    font-size: 1.4rem;
+  }
+
+  .favoritas h2 {
+    font-size: 1.4rem;
+  }
+
+  button {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+
+  .btn-apagar-tudo {
+    font-size: 0.95rem;
+    padding: 8px 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .frase-container {
+    padding: 20px;
+    font-size: 1.3rem;
+  }
+
+  .botoes {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .favoritas {
+    padding: 20px;
+    font-size: 0.95rem;
+  }
+
+  .favoritas ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .favoritas ul li button {
+    margin: 10px 0 0 auto;
+  }
+
+  .btn-apagar-tudo {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .frase-container {
+    padding: 18px;
+    font-size: 1.2rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .botoes {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .favoritas {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+
+  .favoritas ul li {
+    font-size: 0.9rem;
+  }
+
+  .favoritas ul li button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .btn-apagar-tudo {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
 
 
 
