@@ -14,8 +14,6 @@ O projeto exibe **frases inspiradoras aleatórias**, permite **salvar favoritas*
 🌟 Fundo animado com partículas  
 🎨 Design responsivo e estilizado  
 
-> 📌 *Adicione prints ou um GIF aqui para deixar o repositório ainda mais profissional.*
-
 ---
 
 ## 🚀 Funcionalidades
